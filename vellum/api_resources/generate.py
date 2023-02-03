@@ -5,10 +5,11 @@ from vellum.api_resources.abstract.predict_api_resource import PredictAPIResourc
 
 
 class Generate(PredictAPIResource):
-    api_path = "generate"
+    api_path = "v1/generate"
 
+    @classmethod
     def run(
-        self,
+        cls,
         deployment_id: Optional[str] = None,
         deployment_name: Optional[str] = None,
         input_values: List[Dict[str, Any]] = None,
