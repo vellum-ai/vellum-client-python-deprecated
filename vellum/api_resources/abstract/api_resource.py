@@ -5,6 +5,7 @@ import requests
 from requests import Response
 
 import vellum
+from .exceptions import ApiResourceError
 
 
 class APIResource(ABC):
@@ -28,6 +29,10 @@ class APIResource(ABC):
         headers = cls._construct_headers(headers)
 
         response = requests.request(method, url, headers=headers, **kwargs)
-        response.raise_for_status()
+
+        try:
+            response.raise_for_status()
+        except requests.exceptions.HTTPError as e:
+            raise ApiResourceError.from_http_error(e)
 
         return response

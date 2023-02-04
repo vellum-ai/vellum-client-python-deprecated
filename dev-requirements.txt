@@ -20,7 +20,7 @@ certifi==2022.12.7
     # via requests
 cfgv==3.3.1
     # via pre-commit
-charset-normalizer==3.0.1
+charset-normalizer==2.1.1
     # via requests
 click==8.1.3
     # via
@@ -29,6 +29,8 @@ click==8.1.3
 colorama==0.4.6
     # via twine
 coverage==6.5.0
+    # via -r requirements/local.in
+dacite==1.8.0
     # via -r requirements/local.in
 decorator==5.1.1
     # via

@@ -18,7 +18,4 @@ class PredictAPIResource(APIResource):
     def run(cls, **kwargs: Any) -> dict:
         result = cls._make_request("POST", cls.api_path, json=kwargs).json()
 
-        if result.get("provider") == "OPENAI":
-            result["provider_object"] = convert_to_openai_object(result["raw"])
-
         return result

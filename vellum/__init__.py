@@ -6,6 +6,5 @@ api_key = os.environ.get("VELLUM_API_KEY")
 
 __all__ = [
     "Generate",
-    "api_base",
     "api_key",
 ]
