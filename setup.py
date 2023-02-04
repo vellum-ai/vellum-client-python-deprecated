@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-VERSION = "0.0.1"
+VERSION = "0.0.2"
 
 setup(
     name="vellum-client",
@@ -14,7 +14,7 @@ setup(
         "vellum": ["py.typed"],
     },
     install_requires=[
-        "openai>=0.26.0",
+        "dacite>=1.8.0",
         "requests>=2.20.0",
     ],
 )
