@@ -1,8 +1,6 @@
 from abc import abstractmethod
 from typing import Any
 
-from openai.util import convert_to_openai_object
-
 from vellum.api_resources.abstract.api_resource import APIResource
 
 
