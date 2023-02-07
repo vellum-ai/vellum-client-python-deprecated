@@ -75,7 +75,7 @@ class GenerateResult:
     @property
     def text(self) -> str:
         if len(self.texts) != 1:
-            raise ValueError("Expected exactly one completion, but got multiple")
+            raise ValueError(f"Expected exactly one completion, but got {len(self.texts)}")
 
         return self.texts[0]
 
