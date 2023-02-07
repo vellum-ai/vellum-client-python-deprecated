@@ -23,10 +23,12 @@ vellum.api_key = "<YOUR_API_KEY>"
 
 result = vellum.Generate.run(
     deployment_name="my-deployment",
-    input_values=[
-        {"input": "Hello, world!"},
-    ],
+    requests=[
+        vellum.GenerateRequest(
+            input_values={"question": "Can I get a refund?"}
+        )
+    ]
 )
 
-print(result)
+print(result.text)
 ```
