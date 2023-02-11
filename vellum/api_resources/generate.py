@@ -1,15 +1,15 @@
 from dataclasses import asdict
-from typing import Optional, List, Dict, Any
+from typing import Any, Dict, List, Optional
 
-from vellum.api_resources.types import GenerateResult, GenerateRequest
 from vellum.api_resources.abstract.predict_api_resource import PredictAPIResource
+from vellum.api_resources.types import GenerateRequest, GenerateResult
 
 
 class Generate(PredictAPIResource):
     api_path = "v1/generate"
 
     @classmethod
-    def run(
+    def run(  # type: ignore
         cls,
         requests: List[GenerateRequest],
         deployment_id: Optional[str] = None,
