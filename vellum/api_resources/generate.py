@@ -1,8 +1,8 @@
 from dataclasses import asdict
-from typing import Optional, List, Dict, Any
+from typing import Any, Dict, List, Optional
 
-from vellum.api_resources.types import GenerateResult, GenerateRequest
 from vellum.api_resources.abstract.predict_api_resource import PredictAPIResource
+from vellum.api_resources.types import GenerateRequest, GenerateResult
 
 
 class Generate(PredictAPIResource):
