@@ -21,3 +21,7 @@ coverage==6.5.0  # https://github.com/nedbat/coveragepy
 flake8==3.8.4  # https://github.com/PyCQA/flake8
 flake8-isort==5.0.3  # https://github.com/gforcada/flake8-isort
 pre-commit==2.20.0  # https://github.com/pre-commit/pre-commit
+
+# Types
+# ------------------------------------------------------------------------------
+types-requests==2.28.11.12  # https://github.com/python/typeshed

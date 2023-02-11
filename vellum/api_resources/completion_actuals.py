@@ -9,7 +9,7 @@ class SubmitCompletionActuals(PredictAPIResource):
     api_path = "v1/submit-completion-actuals"
 
     @classmethod
-    def run(
+    def run(  # type: ignore
         cls,
         actuals: List[CompletionActual],
         deployment_id: Optional[str] = None,

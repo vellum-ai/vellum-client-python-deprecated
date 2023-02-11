@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-from json import JSONDecodeError
 
 from requests import HTTPError
 
@@ -11,7 +10,7 @@ class ApiResourceError(HTTPError):
         return f"ApiResourceError({self.args[0]}. Details: {self.details})"
 
     @property
-    def details(self) -> "":
+    def details(self) -> str:
         try:
             return json.dumps(self.response.json())
         except json.JSONDecodeError:

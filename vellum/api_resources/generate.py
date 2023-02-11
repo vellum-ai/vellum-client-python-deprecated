@@ -9,7 +9,7 @@ class Generate(PredictAPIResource):
     api_path = "v1/generate"
 
     @classmethod
-    def run(
+    def run(  # type: ignore
         cls,
         requests: List[GenerateRequest],
         deployment_id: Optional[str] = None,

@@ -1,5 +1,5 @@
 from abc import abstractmethod
-from typing import Any
+from typing import Any, cast
 
 from vellum.api_resources.abstract.api_resource import APIResource
 
@@ -14,6 +14,6 @@ class PredictAPIResource(APIResource):
 
     @classmethod
     def run(cls, **kwargs: Any) -> dict:
-        result = cls._make_request("POST", cls.api_path, json=kwargs).json()
+        result = cast(dict, cls._make_request("POST", cast(str, cls.api_path), json=kwargs).json())
 
         return result

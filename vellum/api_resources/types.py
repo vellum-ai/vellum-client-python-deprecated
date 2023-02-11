@@ -107,7 +107,7 @@ class CompletionActual:
     # Optionally include a timestamp representing when this actual was determined.
     timestamp: Optional[datetime] = None
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         if self.id is None and self.external_id is None:
             raise ValueError("Either id or external_id must be provided")
 
