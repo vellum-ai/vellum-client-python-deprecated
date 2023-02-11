@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from datetime import datetime
 from enum import Enum
 from typing import List, Dict, Optional, Any
 
@@ -87,3 +88,36 @@ class GenerateRequest:
     # Optionally provide an external ID for each prompt. This ID will be returned in the result
     # and can later be used to uniquely identify the generation request that produced the result.
     external_ids: Optional[List[str]] = None
+
+
+@dataclass
+class CompletionActual:
+    # The id of the completion request, as originally returned by Vellum when making the Generate call.
+    # You must provide either this or external_id.
+    id: Optional[str] = None
+    # The external id of the completion request, as originally provided by you when making the Generate call.
+    # You must provide either this or id.
+    external_id: Optional[str] = None
+    # The quality of the completion, as a number between 0 and 1. 1 is good, 0 is bad.
+    quality: Optional[float] = None
+    # The desired output text of the completion. You would typically include the original completion text if also
+    # passing quality = 1.0. If you deem quality to be < 1.0, you might include what you wish the
+    # generation had produced.
+    text: Optional[str] = None
+    # Optionally include a timestamp representing when this actual was determined.
+    timestamp: Optional[datetime] = None
+
+    def __post_init__(self):
+        if self.id is None and self.external_id is None:
+            raise ValueError("Either id or external_id must be provided")
+
+        if self.text is None and self.quality is None:
+            raise ValueError("Either text and/or quality must be provided")
+
+        if self.quality is not None and (self.quality < 0 or self.quality > 1):
+            raise ValueError("quality must be between 0 and 1")
+
+
+@dataclass
+class SubmitCompletionActualsResult:
+    success: bool
