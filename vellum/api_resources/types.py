@@ -56,7 +56,7 @@ class CompletionResultError:
 
 @dataclass
 class CompletionResult:
-    data: CompletionResultData
+    data: Optional[CompletionResultData]
     error: Optional[CompletionResultError]
 
 
