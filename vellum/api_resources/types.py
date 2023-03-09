@@ -71,7 +71,11 @@ class GenerateResult:
 
     @property
     def texts(self) -> List[str]:
-        return [completion.text for result in self.results for completion in result.data.completions]
+        return [
+            completion.text
+            for result in self.results
+            for completion in (result.data.completions if result.data else [])
+        ]
 
     @property
     def text(self) -> str:
@@ -121,3 +125,32 @@ class CompletionActual:
 @dataclass
 class SubmitCompletionActualsResult:
     success: bool
+
+
+@dataclass
+class SearchOptions:
+    limit: Optional[int] = 3
+
+
+@dataclass
+class SearchResultDocument:
+    id: str
+    label: str
+    external_id: Optional[str] = None
+
+
+@dataclass
+class SearchResult:
+    document: SearchResultDocument = field(repr=False)
+    text: str
+    keywords: List[str] = field(repr=False)
+    score: float = field(repr=False)
+
+
+@dataclass
+class SearchResults:
+    results: List[SearchResult]
+
+    @classmethod
+    def from_raw(cls, raw_result: dict) -> SearchResults:
+        return dacite.from_dict(data_class=cls, data=raw_result)
