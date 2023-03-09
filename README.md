@@ -5,7 +5,7 @@ The Vellum python library provides convenient access to the Vellum Predict API f
 ## Installation
 
 ```bash
-$ pip install vellum-client-python
+$ pip install vellum-client
 ```
 
 ## Usage
