@@ -57,3 +57,22 @@ vellum.SubmitCompletionActuals.run(
 **Note:** If you don't want to keep track of the ids that Vellum generates, you can include an externalId key in
 the initial generate request. You can then include this externalId when submitting actuals. If you use this
 approach, be sure that the ids you provide truly are unique, or you may get unexpected results.
+
+
+### Performing a Search
+Vellum's Search allows you to upload documents and then perform semantic searches against them.
+Here is an example of how to perform a search:
+
+```python
+import vellum
+
+vellum.api_key = "<YOUR_API_KEY>"
+
+result = vellum.Search.run(
+    index_name="help-center-docs",
+    query="What is fine tuning?",
+    options=vellum.SearchOptions(limit=3),
+)
+
+print(result)
+```
