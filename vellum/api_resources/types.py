@@ -71,7 +71,11 @@ class GenerateResult:
 
     @property
     def texts(self) -> List[str]:
-        return [completion.text for result in self.results for completion in result.data.completions]
+        return [
+            completion.text
+            for result in self.results
+            for completion in (result.data.completions if result.data else [])
+        ]
 
     @property
     def text(self) -> str:
