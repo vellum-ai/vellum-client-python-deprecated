@@ -128,8 +128,19 @@ class SubmitCompletionActualsResult:
 
 
 @dataclass
+class SearchWeights:
+    semantic_similarity: float = 0.8
+    keywords: float = 0.2
+
+    def __post_init__(self):
+        if sum([self.semantic_similarity, self.keywords]) != 1.0:
+            raise ValueError("Weights must sum to 1.0")
+
+
+@dataclass
 class SearchOptions:
     limit: Optional[int] = 3
+    weights: Optional[SearchWeights] = field(default_factory=SearchWeights)
 
 
 @dataclass
