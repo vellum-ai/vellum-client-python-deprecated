@@ -1,8 +1,8 @@
 from dataclasses import asdict
-from typing import List, Optional
+from typing import Optional
 
 from vellum.api_resources.abstract.predict_api_resource import PredictAPIResource
-from vellum.api_resources.types import CompletionActual, SubmitCompletionActualsResult, SearchOptions, SearchResults
+from vellum.api_resources.types import SearchOptions, SearchResults
 
 
 class Search(PredictAPIResource):

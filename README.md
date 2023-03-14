@@ -42,6 +42,8 @@ This feedback can be used to measure model quality and improve it over time.
 ```python
 import vellum
 
+vellum.api_key = "<YOUR_API_KEY>"
+
 vellum.SubmitCompletionActuals.run(
     deployment_name="customer-service-demo",
     actuals=[
@@ -57,6 +59,36 @@ vellum.SubmitCompletionActuals.run(
 **Note:** If you don't want to keep track of the ids that Vellum generates, you can include an externalId key in
 the initial generate request. You can then include this externalId when submitting actuals. If you use this
 approach, be sure that the ids you provide truly are unique, or you may get unexpected results.
+
+
+### Uploading Documents to Search Across
+Documents can be uploaded to Vellum via either the UI or this API. Once uploaded and indexed,
+Vellum's Search allows you to perform semantic searches against them.
+Here is an example of how to upload a document from a local file:
+
+```python
+import vellum
+
+vellum.api_key = "<YOUR_API_KEY>"
+
+
+with open("/path/to/your/file.txt", "rb") as file:
+    result = vellum.UploadDocument.run(
+        # File to upload
+        file=file,
+        # Document label
+        label="Human-friendly label for your document",
+        # Unique name of the index to upload to
+        index_name="<your-index-name>",
+        # Optionally include a unique ID from your system to this document later.
+        #   Useful if you want to perform updates later
+        external_id="<your-index-name>",
+        # Optionally include keywords to associate with the document that can be used in hybrid search
+        keywords=[],
+    )
+    
+print(result)
+```
 
 
 ### Performing a Search
