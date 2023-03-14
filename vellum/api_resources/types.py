@@ -132,7 +132,7 @@ class SearchWeights:
     semantic_similarity: float = 0.8
     keywords: float = 0.2
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         if sum([self.semantic_similarity, self.keywords]) != 1.0:
             raise ValueError("Weights must sum to 1.0")
 
@@ -164,4 +164,13 @@ class SearchResults:
 
     @classmethod
     def from_raw(cls, raw_result: dict) -> SearchResults:
+        return dacite.from_dict(data_class=cls, data=raw_result)
+
+
+@dataclass
+class DocumentUploadResult:
+    document_id: str
+
+    @classmethod
+    def from_raw(cls, raw_result: dict) -> DocumentUploadResult:
         return dacite.from_dict(data_class=cls, data=raw_result)
