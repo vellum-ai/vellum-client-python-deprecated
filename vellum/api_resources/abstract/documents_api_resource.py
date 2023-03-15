@@ -15,13 +15,13 @@ class DocumentsAPIResource(APIResource):
     api_base = "https://documents.vellum.ai"
 
     @classmethod
-    def run(cls, file: IO, **kwargs: Any) -> dict:
+    def run(cls, contents: IO, **kwargs: Any) -> dict:
         result = cast(
             dict,
             cls._make_request(
                 "POST",
                 cast(str, cls.api_path),
-                files={"file": (file.name, file, "application/octet-stream")},
+                files={"contents": (contents.name, contents, "application/octet-stream")},
                 data=kwargs,
             ).json(),
         )
