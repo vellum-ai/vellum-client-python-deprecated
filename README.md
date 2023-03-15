@@ -82,7 +82,7 @@ with open("/path/to/your/file.txt", "rb") as file:
         add_to_index_names=["<your-index-name>"],
         # Optionally include a unique ID from your system to this document later.
         #   Useful if you want to perform updates later
-        external_id="<your-index-name>",
+        external_id="<your-external-id>",
         # Optionally include keywords to associate with the document that can be used in hybrid search
         keywords=[],
     )
