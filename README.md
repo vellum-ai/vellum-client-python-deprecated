@@ -75,11 +75,11 @@ vellum.api_key = "<YOUR_API_KEY>"
 with open("/path/to/your/file.txt", "rb") as file:
     result = vellum.UploadDocument.run(
         # File to upload
-        file=file,
+        contents=file,
         # Document label
         label="Human-friendly label for your document",
-        # Unique name of the index to upload to
-        index_name="<your-index-name>",
+        # The names of indexes that you'd like this document to be added to.
+        add_to_index_names=["<your-index-name>"],
         # Optionally include a unique ID from your system to this document later.
         #   Useful if you want to perform updates later
         external_id="<your-index-name>",
