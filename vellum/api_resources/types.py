@@ -138,9 +138,15 @@ class SearchWeights:
 
 
 @dataclass
+class ResultMerging:
+    enabled: bool
+
+
+@dataclass
 class SearchOptions:
     limit: Optional[int] = 3
     weights: Optional[SearchWeights] = field(default_factory=SearchWeights)
+    result_merging: Optional[ResultMerging] = None
 
 
 @dataclass
