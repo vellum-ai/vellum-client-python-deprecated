@@ -143,10 +143,16 @@ class ResultMerging:
 
 
 @dataclass
+class SearchFilters:
+    external_ids: Optional[List[str]] = None
+
+
+@dataclass
 class SearchOptions:
     limit: Optional[int] = 3
     weights: Optional[SearchWeights] = field(default_factory=SearchWeights)
     result_merging: Optional[ResultMerging] = None
+    filters: Optional[SearchFilters] = None
 
 
 @dataclass

@@ -8,6 +8,7 @@ from vellum.api_resources.types import (
     DocumentUploadResult,
     GenerateRequest,
     ResultMerging,
+    SearchFilters,
     SearchOptions,
     SearchWeights,
 )
@@ -21,6 +22,7 @@ __all__ = [
     "GenerateRequest",
     "ResultMerging",
     "Search",
+    "SearchFilters",
     "SearchOptions",
     "SearchWeights",
     "SubmitCompletionActuals",
