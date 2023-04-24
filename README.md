@@ -1,3 +1,5 @@
+# :no_entry: [DEPRECATED] Active at https://github.com/vellum-ai/vellum-client-python
+
 # Vellum Python Library
 
 The Vellum python library provides convenient access to the Vellum Predict API from python applications.
